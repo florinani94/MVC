@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="evozonDataSource"/>
+
+        <!--<property name="mappingResources">-->
+        <!--<list>-->
+        <!--<value>Product.hbm.xml</value>-->
+        <!--</list>-->
+        <!--</property>-->
+
+        <property name="annotatedClasses">
+            <list>
+                <value>com.evozon.domain.Category</value>
+                <value>com.evozon.domain.Product</value>
+                <value>com.evozon.domain.Entry</value>
+                <value>com.evozon.domain.Cart</value>
+                <value>com.evozon.domain.User</value>
+                <value>com.evozon.domain.Address</value>
+                <value>com.evozon.domain.Authority</value>
+                <value>com.evozon.domain.Orders</value>
+                <value>com.evozon.domain.Payment</value>
+            </list>
+        </property>
+
+
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.show_sql">true</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="evozonDataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/evozon"/>
+        <property name="username" value="root"/>
+        <property name="password" value="root"/>
+    </bean>
+</beans>

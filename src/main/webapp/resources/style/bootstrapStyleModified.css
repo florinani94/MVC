@@ -1,0 +1,18 @@
+.layout-edit {
+    margin: 40px;
+}
+
+.form-control {
+    width: 800px;
+}
+
+.page-header {
+    text-align: left;
+    margin: 40px;
+}
+
+.error
+{
+    color: #ff0000;
+    font-weight: bold;
+}

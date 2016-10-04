@@ -1,0 +1,39 @@
+.container{
+    position: relative;
+}
+
+.leftDiv {
+    float: left;
+    width: 30%;
+    margin-left: -32%;
+    margin-top: -90%;
+    position: absolute;
+    /*top:50px;*/
+    /*left: -20px;*/
+    /*}*/
+}
+.filter{
+    margin-left: 50%;
+    margin-top: 5%;
+}
+.rightDiv {
+    float: left;
+    width: 90%;
+    margin-left: 60%;
+    margin-top: 0;
+    padding-left: 80px;
+
+
+}
+#rectangle {
+    width: 170px;
+    height: 42px;
+    background: rgba(0, 0, 0, 0.22);
+    border-style:solid ;
+    border-color:rgba(0, 0, 0, 0.5);
+    border-width: thin ;
+    padding: 10px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    text-align: center;
+}

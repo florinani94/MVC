@@ -1,0 +1,38 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="myTask" class="com.evozon.service.job.UpdatePriceJob" >
+        <property name="service" ref="productService"/>
+        <property name="xmlService" ref="XMLConvertService"/>
+    </bean>
+
+    <bean id="myJob"
+          class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="myTask" />
+        <property name="targetMethod" value="runJob"/>
+    </bean>
+
+    <bean id="simpleTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="myJob" />
+        <property name="cronExpression" value="0 0/1 * 1/1 * ? *" />
+    </bean>
+
+    <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="autoStartup">
+            <value>false</value>
+        </property>
+        <property name="jobDetails">
+            <list>
+                <ref bean="myJob" />
+            </list>
+        </property>
+        <property name="triggers">
+            <list>
+                <ref bean="simpleTrigger" />
+            </list>
+        </property>
+    </bean>
+
+</beans>
